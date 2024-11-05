@@ -2,17 +2,15 @@ package com.learning.accounts.service;
 
 
 import com.learning.accounts.dto.AccountsDTO;
-import com.learning.accounts.entity.Accounts;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.learning.accounts.dto.CustomerDetailsDTO;
+import com.learning.accounts.entity.Accounts;
 import com.learning.accounts.entity.Customer;
 import com.learning.accounts.repository.AccountsRepository;
 import com.learning.accounts.repository.CustomerRepository;
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Random;

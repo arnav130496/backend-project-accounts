@@ -2,14 +2,11 @@ package com.learning.accounts.controller;
 
 import com.learning.accounts.dto.CustomerDetailsDTO;
 import com.learning.accounts.entity.Accounts;
+import com.learning.accounts.service.AccountsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.endpoint.web.annotation.RestControllerEndpoint;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import com.learning.accounts.dto.AccountsDTO;
-import com.learning.accounts.service.AccountsService;
 
 @RestController
 @RequestMapping("/api/v1/accounts")
