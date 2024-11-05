@@ -67,5 +67,42 @@ public class AccountsService {
 	}
 
 
+    public CustomerDetailsDTO updateAccountInformation(CustomerDetailsDTO customerDetailsDTO) {
+		// first check if account exists
+		AccountsDTO accountsDTO = customerDetailsDTO.getAccountsDTO();
+		if(accountsDTO!=null){
+			Accounts dbAccounts = accountsRepository.findById(accountsDTO.getAccountNumber())
+					.orElseThrow(() -> new RuntimeException("Accounts not found"));
+			BeanUtils.copyProperties(accountsDTO, dbAccounts);
+			dbAccounts = accountsRepository.save(dbAccounts);
+			Long customerId = dbAccounts.getCustomerId();
+			Customer dbCustomer = customerRepository.findById(customerId)
+					.orElseThrow(() -> new RuntimeException("Customer Not Found"));
 
+			BeanUtils.copyProperties(customerDetailsDTO, dbCustomer);
+			customerRepository.save(dbCustomer);
+		}
+		else{
+			throw new RuntimeException("Account info is missing");
+		}
+		return customerDetailsDTO;
+    }
+
+	public boolean deleteAccount(String mobileNumber) {
+		Customer customer = customerRepository.findByMobileNumber(mobileNumber)
+				.orElseThrow(() -> new RuntimeException("No Customer with mobile number " + mobileNumber));
+
+		Long dbCustomerId = customer.getCustomerId();
+
+		accountsRepository.deleteByCustomerId(dbCustomerId);
+		customerRepository.deleteById(dbCustomerId);
+//		Accounts dbAccount = accountsRepository.findByCustomerId(dbCustomerId)
+//				.orElseThrow(() -> new RuntimeException("No Account with customer id " + dbCustomerId));
+//
+//		accountsRepository.deleteById(dbAccount.getAccountNumber());
+//		customerRepository.deleteById(dbCustomerId);
+
+		return true;
+
+	}
 }

@@ -39,7 +39,15 @@ public class AccountsController {
 
 
 	//Update an Account
+	@PutMapping
+	public CustomerDetailsDTO updateAccount(@RequestBody CustomerDetailsDTO customerDetailsDTO){
+		return accountsService.updateAccountInformation(customerDetailsDTO);
+	}
 	
 	//Delete an Account
+	@DeleteMapping
+	public boolean deleteAccount(@RequestParam String mobileNumber){
+		return accountsService.deleteAccount(mobileNumber);
+	}
 
 }
