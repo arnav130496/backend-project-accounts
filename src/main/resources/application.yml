@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: accounts
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:accountsdb
+    username: accounts
+    password: 12345
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: 9003
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+info:
+    app:
+        version: 0.0.1
+        description: Learning Project Microservices Accounts Microservice
