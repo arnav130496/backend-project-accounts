@@ -10,11 +10,13 @@ import com.learning.accounts.feignclients.CardsFeignClient;
 import com.learning.accounts.feignclients.LoansFeignClient;
 import com.learning.accounts.repository.AccountsRepository;
 import com.learning.accounts.repository.CustomerRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class CustomerService {
 
 

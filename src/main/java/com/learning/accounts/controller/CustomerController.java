@@ -20,6 +20,7 @@ public class CustomerController {
     //Fetch a Customer By Mobile Number
     @GetMapping
     public ResponseEntity<CustomerDetailsDTO> fetchAccountByMobileNumber(@RequestParam String mobile){
+        log.info("Fetch an account using mobile number {}", mobile);
         CustomerDetailsDTO output = customerService.fetchAccountByMobileNumber(mobile);
         if(output.equals(new CustomerDetailsDTO())){
             return new ResponseEntity<>(output, HttpStatus.NOT_FOUND);

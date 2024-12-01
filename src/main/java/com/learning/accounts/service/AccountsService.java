@@ -26,7 +26,7 @@ public class AccountsService {
 	private CustomerRepository customerRepository;
 	
 	public String createAccount(CustomerDetailsDTO customerDetailsDTO) {
-		
+		log.info("Create an account service layer");
 		Customer customer = new Customer();
 		//Will copy only those properties which have matching field names
 		BeanUtils.copyProperties(customerDetailsDTO, customer);
