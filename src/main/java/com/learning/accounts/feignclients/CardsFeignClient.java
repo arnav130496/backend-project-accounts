@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name="CARDS")
+@FeignClient(name="CARDS", fallback = CardsCircuitBreakerFallback.class)
 @LoadBalancerClient(name = "CARDS")
 public interface CardsFeignClient {
 
